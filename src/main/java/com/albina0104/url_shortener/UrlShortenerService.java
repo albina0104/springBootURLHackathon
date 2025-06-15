@@ -17,7 +17,7 @@ public class UrlShortenerService {
     public UrlPair shortenUrl(String url) {
         UUID uuid = UUID.randomUUID();
         String encodedUuid = convertToBase62(uuid.toString());
-        String shortUrl = "https://" + config.getShortUrlDomain() + "/" + encodedUuid;
+        String shortUrl = "https://" + config.getShortUrlDomain() + "/" + encodedUuid.substring(0, 7);
         return new UrlPair(shortUrl, url);
     }
 
