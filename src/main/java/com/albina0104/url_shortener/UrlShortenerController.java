@@ -1,8 +1,9 @@
 package com.albina0104.url_shortener;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UrlShortenerController {
@@ -11,6 +12,14 @@ public class UrlShortenerController {
 
     public UrlShortenerController(UrlShortenerService urlShortenerService) {
         this.urlShortenerService = urlShortenerService;
+    }
+
+    @GetMapping("/{shortUrlCode}")
+    public ResponseEntity<Void> redirectToLongUrl(@PathVariable("shortUrlCode") String shortUrlCode) {
+        String longUrl = urlShortenerService.getLongUrl(shortUrlCode);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Location", longUrl);
+        return ResponseEntity.status(HttpStatus.FOUND).headers(headers).build();
     }
 
     @PostMapping("/shortenUrl")

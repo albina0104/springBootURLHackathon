@@ -6,9 +6,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.PersistenceCreator;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class UrlPair {
 
     @Id
