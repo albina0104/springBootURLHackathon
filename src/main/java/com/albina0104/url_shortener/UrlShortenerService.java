@@ -24,6 +24,12 @@ public class UrlShortenerService {
         return repo.save(urlPair);
     }
 
+    public UrlPair getAliasUrl(String url, String alias) {
+        String shortUrl = getShortUrlFromCode(alias);
+        UrlPair urlPair = new UrlPair(shortUrl, url);
+        return repo.save(urlPair);
+    }
+
     public String getLongUrl(String shortUrlCode) {
         String shortUrl = getShortUrlFromCode(shortUrlCode);
         UrlPair urlPair = repo.findByShortUrl(shortUrl);

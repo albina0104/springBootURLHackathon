@@ -26,4 +26,9 @@ public class UrlShortenerController {
     public UrlPair shortenUrl(@RequestParam String url) {
         return urlShortenerService.shortenUrl(url);
     }
+
+    @PostMapping("/getAliasUrl")
+    public UrlPair getAliasUrl(@RequestParam String url, @RequestParam String alias) {
+        return urlShortenerService.getAliasUrl(url, alias);
+    }
 }
