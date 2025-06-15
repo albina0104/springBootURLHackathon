@@ -8,9 +8,11 @@ import java.util.UUID;
 @Service
 public class UrlShortenerService {
 
+    private UrlPairRepository repo;
     private UrlShortenerConfiguration config;
 
-    public UrlShortenerService(UrlShortenerConfiguration config) {
+    public UrlShortenerService(UrlPairRepository repo, UrlShortenerConfiguration config) {
+        this.repo = repo;
         this.config = config;
     }
 
@@ -18,7 +20,8 @@ public class UrlShortenerService {
         UUID uuid = UUID.randomUUID();
         String encodedUuid = convertToBase62(uuid.toString());
         String shortUrl = "https://" + config.getShortUrlDomain() + "/" + encodedUuid.substring(0, 7);
-        return new UrlPair(shortUrl, url);
+        UrlPair urlPair = new UrlPair(shortUrl, url);
+        return repo.save(urlPair);
     }
 
     private String convertToBase62(String str) {
