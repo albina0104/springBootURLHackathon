@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
@@ -17,4 +18,9 @@ public class UrlPair {
     private String shortUrl;
 
     private String longUrl;
+
+    public UrlPair(String shortUrl, String longUrl) {
+        this.shortUrl = shortUrl;
+        this.longUrl = longUrl;
+    }
 }
