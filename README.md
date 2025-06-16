@@ -11,7 +11,7 @@ This project was made during a 2-hour hackathon which took place on Discord.
 - Redirect from a short URL to the long URL
 
 ## Links
-- Repository URL: [https://github.com/albina0104/springBootURLHackathon](https://github.com/albina0104/springBootURLHackathon)
+- Repository URL: [https://github.com/albina0104/url-shortener](https://github.com/albina0104/url-shortener)
 
 ## Author
 - GitHub - [albina0104](https://github.com/albina0104)
